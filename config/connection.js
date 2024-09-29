@@ -3,16 +3,15 @@ const MongoClient = require('mongodb').MongoClient;
 const state = {
     db: null
 };
+//mongodb+srv://Jobin:<db_password>@cluster0.efxy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+//bIOq7XvrlmdTyR3G
 
 module.exports.connect = async function (done) {
-    // MongoDB Atlas connection string with your credentials
-    const url = 'mongodb+srv://Jobin:jobin%40123@cluster0.efxy5.mongodb.net/shopping?retryWrites=true&w=majority';
-    
-    // Database name
+    const url = 'mongodb+srv://Jobin:bIOq7XvrlmdTyR3G@cluster0.efxy5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
     const dbName = 'shopping';
 
     try {
-        const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+        const client = await MongoClient.connect(url,{ useUnifiedTopology: true });
         state.db = client.db(dbName);
         done();
     } catch (err) {
@@ -23,3 +22,5 @@ module.exports.connect = async function (done) {
 module.exports.get = function () {
     return state.db;
 };
+
+
